@@ -5,10 +5,10 @@
 ## Диаграммы проекта
 
 ### 1. Sequence Diagram (Последовательность)
-![Sequence Diagram](sequenceDiagram.png)
+![Sequence Diagram](png/sequenceDiagram.png)
 
 ### 2. Class Diagram (Классы)
-![Class Diagram](classDiagram.png)
+![Class Diagram](png/classDiagram.png)
 
 ### 3. FlowChart (Блок-схема)
-![FlowChart](flowchart.png)
+![FlowChart](png/flowchart.png)
