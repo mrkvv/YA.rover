@@ -1,4 +1,4 @@
-п»ї#include "Buffer.h"
+#include "Buffer.h"
 
 Buffer::Buffer() {
 	this->slots.resize(this->CAPACITY);
@@ -11,7 +11,7 @@ int Buffer::findFirstFreeSlot() {
             return i;
         }
     }
-    return -1;  // Р‘СѓС„РµСЂ РїРѕР»РѕРЅ
+    return -1;  // Буфер полон
 }
 
 std::optional<Request> Buffer::getLowestPriorityRequest() {
@@ -62,7 +62,7 @@ std::optional<Request> Buffer::getHighestPriorityRequestInPackage(int packageId)
 bool Buffer::addRequest(Request request) {
     if (this->isFull()) return false;
 
-    // Р—Р°РЅРѕСЃРёРј Р·Р°СЏРІРєСѓ Р±СѓРєРІР°Р»СЊРЅРѕ РІРѕС‚ С‚Р°Рє, СЂСѓРєР°РјРё РѕС‚С‹СЃРєРёРІР°СЏ РЅСѓР¶РЅРѕРµ РїРµСЂРІРѕРµ СЃРІРѕР±РѕРґРЅРѕРµ РјРµСЃС‚Рѕ РѕС‚ РЅР°С‡Р°Р»Р°
+    // Заносим заявку буквально вот так, руками отыскивая нужное первое свободное место от начала
     slots[this->findFirstFreeSlot()] = request;
     return true;
 }

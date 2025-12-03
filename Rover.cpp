@@ -1,4 +1,4 @@
-п»ї#include "Rover.h"
+#include "Rover.h"
 
 std::mt19937 Rover::gen(std::random_device{}());
 double Rover::lambda = 1.0;
@@ -50,6 +50,6 @@ int Rover::generateServiceTime() {
 	double serviceTime = expDist(gen);
 	int intServiceTime = static_cast<int>(std::ceil(serviceTime));
 
-	// Р“Р°СЂР°РЅС‚РёСЂСѓРµРј, С‡С‚Рѕ РІСЂРµРјСЏ РѕР±СЃР»СѓР¶РёРІР°РЅРёСЏ С…РѕС‚СЏ Р±С‹ 1 РµРґРёРЅРёС†Р°
-	return std::max(1, std::min(intServiceTime, 10));  // РћРіСЂР°РЅРёС‡РёРІР°РµРј 1-10 РµРґРёРЅРёС†
+	// Гарантируем, что время обслуживания хотя бы 1 единица
+	return std::max(1, std::min(intServiceTime, 10));  // Ограничиваем 1-10 единиц
 }

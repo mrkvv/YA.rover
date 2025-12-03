@@ -1,4 +1,4 @@
-﻿#include "Request.h"
+#include "Request.h"
 
 Request::Request(int requestId, int sourceId, int genTime, std::string adress) {
 	this->requestId = requestId;

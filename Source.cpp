@@ -1,4 +1,4 @@
-﻿#include "Source.h"
+#include "Source.h"
 #include <iostream>
 #include <string>
 #include <algorithm>

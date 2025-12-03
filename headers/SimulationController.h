@@ -1,8 +1,9 @@
-п»ї#pragma once
+#pragma once
 #include <Windows.h>
 #include "InputManager.h"
 #include "OutputManager.h"
 #include "Source.h"
+#include "EventCalendar.h"
 
 class SimulationController {
 private:
@@ -20,8 +21,17 @@ private:
 	HANDLE hConsole;
 
 public:
+	EventCalendar calendar;
+
 	SimulationController();
 	bool makeStep();
+
+	// Метрики для автоматического режима
+	int requestsInSum = REQUESTS_PER_SOURCE_AMOUNT * 3;
+	int passedRequests = 0;
+	int deniedRequests = 0;
+
+	void printAutoModeResults();
 
 private:
 	void processIncomingRequest();

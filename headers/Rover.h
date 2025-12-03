@@ -1,4 +1,4 @@
-п»ї#pragma once
+#pragma once
 #include "Request.h"
 #include <optional>
 #include <random>
@@ -8,11 +8,11 @@ private:
 	int id;
 	bool isBusy;
 	std::optional<Request> currentRequest;
-	// startTime СЌС‚Рѕ РІСЂРµРјСЏ, СѓРєР°Р·Р°РЅРЅРѕРµ РІ request
+	// startTime это время, указанное в request
 	int endTime;
 
 	static std::mt19937 gen;
-	static double lambda; // РџР°СЂР°РјРµС‚СЂ РґР»СЏ СЌРєСЃРї СЂР°СЃРїСЂРµРґРµР»РµРЅРёСЏ, РїРѕ РґРµС„РѕР»С‚Сѓ = 1.0
+	static double lambda; // Параметр для эксп распределения, по дефолту = 1.0
 
 public:
 	Rover() = delete;
