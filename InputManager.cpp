@@ -19,6 +19,9 @@ bool InputManager::handleBufferFull(Request request) {
 			+ " на время " + std::to_string(requestForDelete.value().getGenerationTime());
 		calendar.addEvent(request.getGenerationTime(), "Выбивание заявки", description, "Диспетчер постановки", 2.0);
 
+		// Пишем для статистики в сумму отказанных заявок источника
+		deniesCounter[requestForDelete.value().getPriority() - 1]++;
+
 		return this->buf.addRequest(request);
 	}
 	

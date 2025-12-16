@@ -10,12 +10,16 @@ Rover::Rover(int id) {
 	this->endTime = -1;
 }
 
-void Rover::startService(Request request, int currentTime) {
+// ¬озвращает врем€ выполнени€ этой за€вки
+int Rover::startService(Request request, int currentTime) {
 	this->isBusy = true;
 	this->currentRequest = request;
 
-	this->endTime = currentTime + generateServiceTime();
+	int serviceTime = generateServiceTime();
+
+	this->endTime = currentTime + serviceTime;
 	std::cout << "Rover#" << this->id << " started " << request << " until " << this->endTime << "\n";
+	return serviceTime;
 }
 
 void Rover::completeService() {

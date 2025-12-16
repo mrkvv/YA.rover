@@ -13,4 +13,6 @@ public:
 	InputManager(Buffer& buf, EventCalendar& cal);
 	bool processRequest(Request request);
 	Buffer& getBuffer();
+
+	double deniesCounter[3] = { 0.0 };
 };

@@ -5,7 +5,7 @@
 
 class Buffer {
 private:
-	static const int CAPACITY = 10;
+	static const int CAPACITY = 26;
 	std::vector<std::optional<Request>> slots;
 	int freeSlotPointer;
 

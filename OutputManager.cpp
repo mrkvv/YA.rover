@@ -54,15 +54,18 @@ Rover* OutputManager::selectRover() {
 	return nullptr; // Не нашли свободных роверов
 }
 
-void OutputManager::startService(Rover* rover, Request request, int currentTime) {
+// Возвращает время выполнения заявки
+ServiceResults OutputManager::startService(Rover* rover, Request request, int currentTime) {
 	if (rover != nullptr) {
+		ServiceResults results;
 		std::string description2 = "Заявка Source#" + std::to_string(request.getPriority())
 			+ " Request#" + std::to_string(request.getId()) + " отправлена на выполнение для Rover#"
 			+ std::to_string(rover->getId());
 		calendar.addEvent(currentTime, "Отправка заявки на обработку", description2, "Диспетчер выборки", 4.0 + 0.1 * rover->getId());
 		
-		// Запускаем ровера
-		rover->startService(request, currentTime);
+		// Запускаем ровера и пишем статистику
+		results.serviceTime = rover->startService(request, currentTime);
+		results.inBufferAwaitingTime = currentTime - request.getGenerationTime();
 
 		std::string description1 = "Из буфера взята заявка Source#" + std::to_string(request.getPriority())
 			+ " Request#" + std::to_string(request.getId());
@@ -70,6 +73,11 @@ void OutputManager::startService(Rover* rover, Request request, int currentTime)
 		
 		// Удаляем заявку из буфера
 		buf.removeRequest(request);
+
+		// Помечаем для статистики, что ровер занят на это время
+		roversStats.busyInTotals[rover->getId()] += results.serviceTime;
+
+		return results;
 	}
 }
 

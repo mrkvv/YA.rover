@@ -18,7 +18,7 @@ public:
 	Rover() = delete;
 	Rover(int id);
 
-	void startService(Request request, int currentTime);
+	int startService(Request request, int currentTime);
 	void completeService();
 	bool isAvailable();
 	int getId();

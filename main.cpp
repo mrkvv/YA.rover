@@ -47,7 +47,7 @@
 int main() {
 	SimulationController sc = SimulationController();
 
-	const bool MODE = false;  // true - автоматика, false - пошаговый
+	const bool MODE = true;  // true - автоматика, false - пошаговый
 
 	if (MODE) {
 		while (true) {
